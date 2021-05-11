@@ -1,8 +1,33 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { Row } from 'react-bootstrap';
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+
+
 
 function App() {
+  const [ paciente, setPaciente ] = useState({ 
+    documento: " ",
+    nombres: " ",
+    apellidos: " ",
+    correo: " ",
+    telefono: " ",
+    nacimiento: " ",
+    estado: " ",
+    genero: " ",
+    direccion: " ",
+    ciudad: " ",
+    codigopostal: " ",
+    pais: " ",
+    nacionalidad: " ",
+    estudios: " ",
+    ocupacion: " ",
+    aficiones: " "
+   })
+  // const handleChanges = (e) =>{
+  //   const {  }
+  
+  // }
   return (
     <div className="App-container">
       <Head1/>
@@ -10,6 +35,13 @@ function App() {
       <h2>Informacion Personal</h2>
       <Row id="informacionPersonal">
         <Row>
+
+          <InputGroup>
+            <Input placeholder="Nombre" />
+          </InputGroup>
+
+
+
           <PerInfo x="N° de documento:" y="text"/>
           <PerInfo x="Email:" y="text"/>
           <label for="civil">Estado Civil:</label>
@@ -38,7 +70,7 @@ function App() {
       </Row>
 
       <h2>Contacto</h2>
-      <Row>
+      <Row id="contacto">
 
         <Row>
           <PerInfo x="Direccion:" y="text"/>
@@ -55,6 +87,7 @@ function App() {
           <PerInfo x="Ciudad:" y="text"/>
           <label for="nacionalidad">Nacionalidad</label>
           <select id="nacionalidad">
+            <option value="default"> </option>
             <option value="Española">Española</option>
             <option value="Italiana">Italiana</option>
             <option value="Americana">Americana</option>
@@ -84,6 +117,8 @@ function App() {
     
   );
 }
+
+
 const Head1 = () =>{
   return(
     <div class="headRow">
@@ -110,5 +145,7 @@ const PerInfo = (props) =>{
     </div>
   );
 }
+
+
 
 export default App;
