@@ -1,7 +1,6 @@
 import './App.css';
-import React, { useState } from 'react';
-import { Row } from 'react-bootstrap';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, FormGroup, Label, Input, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 
 
@@ -23,11 +22,13 @@ function App() {
     estudios: " ",
     ocupacion: " ",
     aficiones: " "
-   })
-  // const handleChanges = (e) =>{
-  //   const {  }
-  
-  // }
+   });
+
+
+  const handleChanges = (e) =>{
+    const { name, value } = e.target;
+    setPaciente({ ...paciente , [name]: value});
+  }
   return (
     <div className="App-container">
       <Head1/>
@@ -36,35 +37,118 @@ function App() {
       <Row id="informacionPersonal">
         <Row>
 
-          <InputGroup>
-            <Input placeholder="Nombre" />
-          </InputGroup>
+          <FormGroup>
+            <Label for="patient-document">N° de Documento:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="N° de Documento" 
+              name="documento"
+              id="patient-documento"
+              value={paciente.documento}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+          {/*<PerInfo x="N° de documento:" y="text"/>*/}
 
 
+          <FormGroup>
+            <Label for="patient-correo">Email:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="ejemplo@ex.com" 
+              name="correo"
+              id="patient-correo"
+              value={paciente.correo}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+          {/* {<PerInfo x="Email:" y="text"/>} */}
 
-          <PerInfo x="N° de documento:" y="text"/>
-          <PerInfo x="Email:" y="text"/>
+
           <label for="civil">Estado Civil:</label>
-          <select id="civil">
+          <select id="civil" name="estado" onChange={handleChanges}>
               <option value="default"> </option>
               <option value="Soltero">Soltero</option>
               <option value="Casado">Casado</option>
-          </select>          
+          </select>  
+
+
         </Row>
+
+
         <Row >
-        <PerInfo x="Nombre:" y="text"/>
-        <PerInfo x="Telefono:" y="text"/>
+
+        <FormGroup>
+            <Label for="patient-nombres">Nombre</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="Nombre" 
+              name="nombres"
+              id="patient-nombres"
+              value={paciente.nombres}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Nombre:" y="text"/> */}
+
+
+        <FormGroup>
+            <Label for="patient-telefono">Telefono:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="Numero de telefono" 
+              name="telefono"
+              id="patient-telefono"
+              value={paciente.telefono}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Telefono:" y="text"/> */}
+
+
         <label for="gender">Género:</label>
-        <select id="gender">
+        <select id="gender" name="genero" onChange={handleChanges}>
             <option value="default"> </option>
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
         </select>
           
         </Row>
+
         <Row>
-        <PerInfo x="Apellidos:" y="text"/>
-        <PerInfo x="Fecha de nacimiento:" y="date"/>
+
+
+        <FormGroup>
+            <Label for="patient-apellidos">Apellidos:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="Apellidos" 
+              name="apellidos"
+              id="patient-apellidos"
+              value={paciente.apellidos}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Apellidos:" y="text"/> */}
+
+        <FormGroup>
+            <Label for="patient-nacimiento">Fecha de Nacimiento:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="nacimiento" 
+              name="nacimiento"
+              id="patient-nacimiento"
+              value={paciente.nacimiento}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Fecha de nacimiento:" y="date"/> */}
         
         </Row>
       </Row>
@@ -73,9 +157,22 @@ function App() {
       <Row id="contacto">
 
         <Row>
-          <PerInfo x="Direccion:" y="text"/>
-          <label for="pais">País</label>
-          <select id="Pais:">
+        <FormGroup>
+            <Label for="patient-direccion">Direccion:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="Direccion" 
+              name="direccion"
+              id="patient-direccion"
+              value={paciente.direccion}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+          {/* <PerInfo x="Direccion:" y="text"/> */}
+
+          <label for="pais">País</label>          
+          <select id="Pais:" name="pais" onChange={handleChanges}>
             <option value="default"> </option>
             <option value="España">España</option>
             <option value="Italia">Italia</option>
@@ -84,9 +181,24 @@ function App() {
         </Row>
 
         <Row>
-          <PerInfo x="Ciudad:" y="text"/>
+
+        <FormGroup>
+            <Label for="patient-ciudad">Ciudad:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="Ciudad" 
+              name="ciudad"
+              id="patient-ciudad"
+              value={paciente.ciudad}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+          {/* <PerInfo x="Ciudad:" y="text"/> */}
+
+
           <label for="nacionalidad">Nacionalidad</label>
-          <select id="nacionalidad">
+          <select id="nacionalidad" name="nacionalidad" onChange={handleChanges}>
             <option value="default"> </option>
             <option value="Española">Española</option>
             <option value="Italiana">Italiana</option>
@@ -94,7 +206,20 @@ function App() {
           </select>
         </Row>
         <Row>
-          <PerInfo x="Codigo postal:" y="text"/>
+
+        <FormGroup>
+            <Label for="patient-codigopostal">Codigo Postal:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="XXXXXX" 
+              name="codigopostal"
+              id="patient-codigopostal"
+              value={paciente.codigopostal}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+          {/* <PerInfo x="Codigo postal:" y="text"/> */}
         </Row>
 
         
@@ -106,12 +231,50 @@ function App() {
 
       <div id="informacionAdicional">
 
-        <PerInfo x="Estudios:" y="text"/>
-        <PerInfo x="Ocupacion:" y="text"/>
-        <PerInfo x="Aficiones:" y="text"/>
+      <FormGroup>
+            <Label for="patient-estudios">Nivel de estudios:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="estudios" 
+              name="estudios"
+              id="patient-estudios"
+              value={paciente.estudios}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Estudios:" y="text"/> */}
+
+        <FormGroup>
+            <Label for="patient-estudios">Ocupacion:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="ocupacion" 
+              name="ocupacion"
+              id="patient-ocupacion"
+              value={paciente.ocupacion}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Ocupacion:" y="text"/> */}
+
+        <FormGroup>
+            <Label for="patient-estudios">Aficiones:</Label>
+            <br/>
+            <Input
+              type='text'
+              placeholder="aficiones" 
+              name="aficiones"
+              id="patient-aficiones"
+              value={paciente.aficiones}
+              onChange={handleChanges}
+            />
+          </FormGroup>
+        {/* <PerInfo x="Aficiones:" y="text"/> */}
       </div>
       
-      <button class="aceptarButton" onClick="">ACEPTAR</button>
+      <button class="aceptarButton" onClick={() => console.log(paciente)} >ACEPTAR</button>
     </div>
     
     
