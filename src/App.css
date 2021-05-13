@@ -1,5 +1,7 @@
 body{
-  background-color: #75746f;
+  background-image:url(fond.png);
+  background-repeat: no-repeat;
+  background-color: #000000;
 }
 h2{
   margin-left: 30px;
@@ -94,4 +96,12 @@ input{
   display:flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+#musicamaestro{
+  margin-left: 82vw;
+  margin-top: 16vh;
+  width: 107px;
+  height: 30px;
+  opacity: 0%;
+  
 }
